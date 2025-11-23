@@ -1,4 +1,4 @@
-export default function createGame() {
+export default function createGame(screen) {
     const state = {
         players: {},
         fruits: {},

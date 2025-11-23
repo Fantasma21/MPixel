@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- TELA DE LOGIN -->
+    <div id="login-screen">
+        <h2>Entrar no Jogo</h2>
+        <input type="text" id="nickname" placeholder="Digite seu nome">
+        <button id="btn-login">Entrar</button>
+    </div>
+    <div id="timer" class="timer-box"></div>
+
+
+    <div id="ranking" class="ranking-box"></div>
+
+    <!-- JOGO -->
+    <canvas id="screen" style="display:none"></canvas>
+    
+
+    <div id="ranking" class="ranking-box"></div>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="mult.js"></script>
+
+</body>
+
+</html>
