@@ -2,25 +2,19 @@
 export default function createKeyboardListener(document) {
   const state = { observers: [] }
 
-  function subscribe(fn) {
-    state.observers.push(fn)
-  }
+  function subscribe(fn) { state.observers.push(fn) }
+  function notifyAll(command) { for (const fn of state.observers) fn(command) }
 
-  function notifyAll(command) {
-    for (const fn of state.observers) fn(command)
-  }
+  document.addEventListener("keydown", (e) => {
+    const map = {
+      ArrowUp: "up",
+      ArrowDown: "down",
+      ArrowLeft: "left",
+      ArrowRight: "right"
+    }
 
-  const mapKeys = {
-    ArrowUp: "up",
-    ArrowDown: "down",
-    ArrowLeft: "left",
-    ArrowRight: "right"
-  }
-
-  document.addEventListener('keydown', e => {
-    const direction = mapKeys[e.key]
-    if (direction) {
-      notifyAll({ keyPressed: direction })
+    if (map[e.key]) {
+      notifyAll({ keyPressed: map[e.key] })
     }
   })
 
