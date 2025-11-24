@@ -1,16 +1,16 @@
 export default function setupSocket(io, game) {
 
     io.on("connection", socket => {
-       // ← depois de game.addPlayer(...)
+        // ← depois de game.addPlayer(...)
 
-const ranking = Object.values(game.state.players)
-  .sort((a, b) => b.score - a.score)
-  .map(p => ({
-    nickname: p.nickname,
-    score: p.score
-  }))
+        const ranking = Object.values(game.state.players)
+            .sort((a, b) => b.score - a.score)
+            .map(p => ({
+                nickname: p.nickname,
+                score: p.score
+            }))
 
-socket.emit("ranking-update", ranking)
+        socket.emit("ranking-update", ranking)
 
         console.log("> Conectado:", socket.id)
 
@@ -25,9 +25,10 @@ socket.emit("ranking-update", ranking)
         })
 
         socket.on("move", direction => {
-            game.movePlayer(socket.id, direction)
+            game.movePlayer(socket.id, direction, null)
             io.emit("state", game.state)
         })
+
 
         socket.on("disconnect", () => {
             game.removePlayer(socket.id)

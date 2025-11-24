@@ -42,11 +42,12 @@ export default function createGame() {
 
     function movePlayer(playerId, direction, clientSeq) {
         const moves = {
-            ArrowUp(p) { if (p.y > 0) p.y-- },
-            ArrowDown(p) { if (p.y < state.screen.height - 1) p.y++ },
-            ArrowLeft(p) { if (p.x > 0) p.x-- },
-            ArrowRight(p) { if (p.x < state.screen.width - 1) p.x++ }
-        }
+    up(p)    { if (p.y > 0) p.y-- },
+    down(p)  { if (p.y < state.screen.height - 1) p.y++ },
+    left(p)  { if (p.x > 0) p.x-- },
+    right(p) { if (p.x < state.screen.width - 1) p.x++ }
+}
+
 
         const player = state.players[playerId]
         if (!player) return
