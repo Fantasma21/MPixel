@@ -1,21 +1,31 @@
+/* ------------------- RESET / BASE ------------------- */
 body {
-    margin: 1;
-    padding: 1;
-    position: relative; /* IMPORTANTÍSSIMO */
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+    background: #f5f5f5;
 }
 
-
+/* ------------------- CANVAS ------------------- */
 #screen {
+    display: block;
+    margin: 0 auto;
     background: #a6eff1;
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
+    touch-action: none; /* IMPORTANTE para mobile */
 }
 
+/* Para manter o tamanho verdadeiro do jogo sem distorcer */
 canvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
     border: 2px solid #000;
+    display: block;
+    margin: 0 auto;
+    max-width: 100vw;
 }
 
+/* ------------------- LOGIN ------------------- */
 #login-screen {
     position: fixed;
     top: 50%;
@@ -26,18 +36,19 @@ canvas {
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
     border-radius: 8px;
     text-align: center;
+    z-index: 2000;
 }
 
 #login-screen input {
     padding: 10px;
-    width: 200px;
+    width: 220px;
     font-size: 16px;
     margin-bottom: 10px;
 }
 
 #login-screen button {
     padding: 10px;
-    width: 220px;
+    width: 240px;
     font-size: 16px;
     background: black;
     color: white;
@@ -45,89 +56,51 @@ canvas {
     cursor: pointer;
 }
 
+/* ------------------- RANKING ------------------- */
 #ranking {
-    position: absolute;
-    top: 2px;              /* distância do topo */
-    right: 5px;            /* distância da direita */
-    background: rgba(204, 245, 191, 0.85);
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(204, 245, 191, 0.95);
     padding: 10px 15px;
-    border-radius: 8px;
+    border-radius: 12px;
     font-family: Arial, sans-serif;
-    border: 1px solid #0a1bb6;
-    width: 150px;
+    border: 2px solid #0a1bb6;
+    width: 160px;
+    z-index: 9999;
 }
 
 #ranking h3 {
-    margin: 10 0 5px;
+    margin: 0 0 6px;
     font-size: 16px;
     text-align: center;
 }
 
-#ranking ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
 #ranking li {
     font-size: 14px;
-    padding: 2px 0;
+    padding: 1px 0;
+    list-style: none;
 }
 
+/* ------------------- TIMER ------------------- */
 #timer {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  background: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.75);
   color: white;
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 18px;
   font-family: Arial;
-}
-  
-canvas {  
-    width: 100%;
-    height: auto;
-    max-width: 900px;
-    border: 2px solid #333;
-    display: block;
-    margin: 0 auto;
+  z-index: 9999;
 }
 
-#ranking-container, #timer-box {
-    position: fixed;
-    z-index: 999;
-}
-
-#ranking-container {
-    top: 10px;
-    right: 10px;
-    width: 140px;
-}
-
-#timer-box {
-    top: 10px;
-    left: 10px;
-}
-
-@media (max-width: 600px) {
-    .player {
-        width: 15px;
-        height: 15px;
-    }
-
-    .fruit {
-        width: 12px;
-        height: 12px;
-    }
-}
-
-/* Touch Controls */
+/* ------------------- TOUCH CONTROLS ------------------- */
 #touch-controls {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: 25px;
+  left: 25px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -140,13 +113,13 @@ canvas {
 }
 
 .btn-touch {
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   border: none;
-  border-radius: 10px;
-  background: rgba(0,0,0,0.6);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.65);
   color: white;
-  font-size: 30px;
+  font-size: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,9 +130,7 @@ canvas {
   background: black;
 }
 
-/* Some adjustments for mobile screens */
+/* Oculta controles no PC */
 @media (min-width: 800px) {
   #touch-controls { display: none; }
 }
-
-

@@ -78,12 +78,13 @@ function emitMovement(direction) {
 }
 
 // Touch buttons logic
-const btnUp = document.getElementById("btn-up");
-const btnDown = document.getElementById("btn-down");
-const btnLeft = document.getElementById("btn-left");
-const btnRight = document.getElementById("btn-right");
+btnUp?.addEventListener("touchstart", () => emitMovement("ArrowUp"))
+btnDown?.addEventListener("touchstart", () => emitMovement("ArrowDown"))
+btnLeft?.addEventListener("touchstart", () => emitMovement("ArrowLeft"))
+btnRight?.addEventListener("touchstart", () => emitMovement("ArrowRight"))
 
-btnUp?.addEventListener("touchstart", () => emitMovement("up"));
-btnDown?.addEventListener("touchstart", () => emitMovement("down"));
-btnLeft?.addEventListener("touchstart", () => emitMovement("left"));
-btnRight?.addEventListener("touchstart", () => emitMovement("right"));
+btnUp?.addEventListener("click", () => emitMovement("ArrowUp"))
+btnDown?.addEventListener("click", () => emitMovement("ArrowDown"))
+btnLeft?.addEventListener("click", () => emitMovement("ArrowLeft"))
+btnRight?.addEventListener("click", () => emitMovement("ArrowRight"))
+
