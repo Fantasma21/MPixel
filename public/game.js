@@ -54,6 +54,36 @@ export default function createGame() {
     if (player && fn) fn(player)
   }
 
+  // --- CONTROLES TOUCH PARA CELULAR ---
+
+let touchStartX = 0
+let touchStartY = 0
+
+window.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0]
+    touchStartX = touch.clientX
+    touchStartY = touch.clientY
+})
+
+window.addEventListener("touchmove", (e) => {
+    e.preventDefault() // impede scroll da página
+
+    const touch = e.touches[0]
+    const dx = touch.clientX - touchStartX
+    const dy = touch.clientY - touchStartY
+
+    const threshold = 20 // sensibilidade
+
+    if (Math.abs(dx) > Math.abs(dy)) {
+        if (dx > threshold) socket.emit("move", "right")
+        if (dx < -threshold) socket.emit("move", "left")
+    } else {
+        if (dy > threshold) socket.emit("move", "down")
+        if (dy < -threshold) socket.emit("move", "up")
+    }
+})
+
+
   function createLocalMove(direction) {
     const seq = nextSeq++
     if (!clientId) return null

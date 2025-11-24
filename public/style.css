@@ -85,4 +85,42 @@ canvas {
   font-size: 18px;
   font-family: Arial;
 }
+  
+canvas {  
+    width: 100%;
+    height: auto;
+    max-width: 900px;
+    border: 2px solid #333;
+    display: block;
+    margin: 0 auto;
+}
+
+#ranking-container, #timer-box {
+    position: fixed;
+    z-index: 999;
+}
+
+#ranking-container {
+    top: 10px;
+    right: 10px;
+    width: 140px;
+}
+
+#timer-box {
+    top: 10px;
+    left: 10px;
+}
+
+@media (max-width: 600px) {
+    .player {
+        width: 15px;
+        height: 15px;
+    }
+
+    .fruit {
+        width: 12px;
+        height: 12px;
+    }
+}
+
 
